@@ -1,0 +1,20 @@
+# node modules
+/node_modules
+
+# build folder
+/local
+/dist
+/sit
+
+# log files
+/*.log
+
+# env file
+.env
+
+# ide files
+/.vscode
+/.settings/
+/bin/
+/build/
+/WebContent/
