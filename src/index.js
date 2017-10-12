@@ -5,7 +5,9 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import Main from 'containers/'
+
+// import main router
+import MainRouter from './index.router'
 
 // import bootstrap
 import 'bootstrap'
@@ -13,23 +15,18 @@ import 'bootstrap'
 // import app style
 import './styles/app.scss'
 
-ReactDOM.render(
-  <AppContainer>
-    <Main />
-  </AppContainer>,
-  document.getElementById('app')
-)
-
-// migrate by this guide
-// https://github.com/gaearon/react-hot-loader/tree/master/docs#migration-to-30
-if (module.hot) {
-  module.hot.accept('containers/', () => {
-    const NewMain = require('containers/').default
-    ReactDOM.render(
-      <AppContainer>
-        <NewMain />
-      </AppContainer>,
-      document.getElementById('app')
-    )
-  })
+// render app common method
+const renderApp = (App, domId = 'app') => {
+  ReactDOM.render(
+    <AppContainer>
+      <App />
+    </AppContainer>,
+    document.getElementById(domId)
+  )
 }
+
+// render app router
+renderApp(MainRouter)
+
+// config hot reload
+module.hot && module.hot.accept('./index.router', () => renderApp(MainRouter))
