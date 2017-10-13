@@ -1,5 +1,5 @@
 /* Dynamic Exporter:
- * Dynamically export all routes in current folder
+ * Dynamically export all components in current folder
  */
 const req = require.context('.', true, /[A-Za-z0-9]\/index\.js$/)
 

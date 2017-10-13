@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Redirect, NavLink, Switch } from 'react-router-dom'
 
 import { Header, Container } from 'components'
-import { NotFound } from 'routes'
+import { NotFound } from 'pages'
 
 export default class Home extends Component {
   componentDidMount () {

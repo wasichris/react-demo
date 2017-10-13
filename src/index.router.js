@@ -2,8 +2,8 @@ import React from 'react'
 import { Switch, Redirect } from 'react-router'
 import { Route, HashRouter as Router } from 'react-router-dom'
 
-// impot routes
-import { Home, Playground, Login } from 'routes'
+// impot pages
+import { Home, Playground, Login } from 'pages'
 
 const MainRouter = () => (
   <Router key={Math.random()} >
