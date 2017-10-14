@@ -3,6 +3,7 @@ import { addNumber as add } from 'common/utils'
 import { Header, Container } from 'components'
 import { get } from 'lodash'
 import { connect } from 'react-redux'
+import { goBack } from 'react-router-redux'
 
 const Home = props => {
   return <div>
@@ -18,6 +19,9 @@ const Home = props => {
             <a className='btn btn-primary' href='#' onClick={() => props.setUserName('Dispatched New Name')} role='button'>Dispatch »</a>
             {` Hi, I'm `}{props.userName}
           </p>
+          <p>
+            <a className='btn btn-primary' href='#' onClick={() => props.goBack()} role='button'>Go back »</a>
+          </p>
         </div>
       </div>
 
@@ -30,7 +34,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setUserName: (newName) => dispatch({ type: 'profile/setUserName', payload: newName })
+  setUserName: (newName) => dispatch({ type: 'profile/setUserName', payload: newName }),
+  goBack: () => dispatch(goBack())
 })
 
 // export default Home

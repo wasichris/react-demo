@@ -1,7 +1,7 @@
 import { appModels } from 'setup'
 import { each, mapKeys } from 'lodash'
 import { combineReducers } from 'redux'
-
+import { routerReducer } from 'react-router-redux'
 import { handleActions } from 'redux-actions'
 
 // extra model reducers
@@ -33,7 +33,8 @@ function combineModelReducers (models, reducers) {
 
 // define extra reducers
 const extraReducers = {
-  // form: formReducer, router: routerReducer, intl: intlReducer
+  router: routerReducer
+  // form: formReducer, intl: intlReducer
 }
 
 // app reducers = combine all model reducers + extra reducers

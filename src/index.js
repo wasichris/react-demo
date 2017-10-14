@@ -5,9 +5,10 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { appReducers, appStoreEnhancers } from 'setup'
+import { appReducers, appStoreEnhancers, appHistory } from 'setup'
 import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux'
+import { ConnectedRouter } from 'react-router-redux'
 
 // import main router
 import MainRouter from './index.router'
@@ -26,7 +27,9 @@ const renderApp = (App, domId = 'app') => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <App />
+        <ConnectedRouter history={appHistory}>
+          <App />
+        </ConnectedRouter>
       </Provider>
     </AppContainer>,
     document.getElementById(domId)
