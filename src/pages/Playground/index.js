@@ -10,7 +10,6 @@ export default class Home extends Component {
   }
 
   render () {
-    console.log(this.props)
     const { match } = this.props
     return (
       <div id='pageHome'>

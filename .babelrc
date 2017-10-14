@@ -6,7 +6,8 @@
         "modules": false
       }
     ],
-    "react"
+    "react",
+    "stage-0" // 沒有用這個無法使用 Rest Properties (...) 
   ],
   "plugins": [
     "react-hot-loader/babel",
