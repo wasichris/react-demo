@@ -6,22 +6,22 @@ import { delay } from 'redux-saga'
 import invariant from 'invariant'
 
 function extractModelEffects (model) {
-  const { namespace, effects, watchers = [] } = model
-  each(effects, (v, k) => {
-    function * effectFunction (action) {
-      yield v(action, { simplePut: enableSimplePut(namespace), put, call, select, delay, take })
+  const { namespace, sagas, effects = [] } = model
+  each(sagas, (saga, k) => {
+    function * sagaFunction (action) {
+      yield saga(action, { simplePut: enableSimplePut(namespace), put, call, select, delay, take })
     }
 
     function * watcher () {
       // 設定 action type 與 saga 的關聯
       // 如果 match pattern 就會執行 saga effect function
-      yield takeEvery(`${namespace}/${k}`, effectFunction)
+      yield takeEvery(`${namespace}/${k}`, sagaFunction)
     }
 
-    watchers.push(watcher())
+    effects.push(watcher())
   })
 
-  return watchers
+  return effects
 }
 
 // HOF: return simplePut(type, payload)
@@ -49,13 +49,13 @@ const enableSimplePut = namespace => (type, payload) => {
 function combineModelEffects (models, effects) {
   each(models, m => effects.push(extractModelEffects(m)))
   const flattenedEffects = flatten(effects)
-  // 最終整理出 root saga watchers 陣列 (可能包括 fork, takeEvery 各種功能)
+  // 最終整理出 root saga effects 陣列 (可能包括 fork, takeEvery 各種功能)
   return function * () { yield flattenedEffects }
 }
 
 // 因為系統需要先載入參數檔
 // 後續才能依據此參數進行後續動作
-// 因此在 root saga 加入 fork 動作來觸發此行為 (extraSagaEffects)
+// 因此在 root saga 加入 fork 動作來觸發此行為 (extraEffects)
 // 並且在完成此工作後 put 成功的 action
 
 // 其他一樣進入系統後同時會執行的動作中會存在以下 take 代碼
@@ -64,7 +64,7 @@ function combineModelEffects (models, effects) {
 // 即使 saga 已經被觸發該但仍會在 take 中等待該 action 被觸發
 // 表示等待載入參數檔成功後(獲得資料)才得以接續執行後續行為
 
-function * preloadSystemConfig () {
+function * loadSystemConfig () {
   try {
     // get system config
     const config = yield call(authService.getSystemConfig)
@@ -76,9 +76,9 @@ function * preloadSystemConfig () {
   }
 }
 
-// define extra SagaWatchers
-const extraSagaEffects = [
-  fork(preloadSystemConfig)
+// define extra effects
+const extraEffects = [
+  fork(loadSystemConfig)
 ]
 
-export default combineModelEffects(appModels, extraSagaEffects)
+export default combineModelEffects(appModels, extraEffects)

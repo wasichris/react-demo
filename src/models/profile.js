@@ -14,7 +14,7 @@ export default {
       return { ...state, userProfile: payload }
     }
   },
-  effects: {
+  sagas: {
     * getUserProfile (action, { simplePut, call }) {
       try {
         const { payload: userId } = action
@@ -27,5 +27,5 @@ export default {
       }
     }
   },
-  watchers: [ /* 在 app 啟動後 root saga 直接執行的 saga-effect 項目 (ex. fork, put ...) */]
+  effects: [ /* 在 app 啟動後 root saga 直接執行的 saga-effect 項目 (ex. fork, put ...) */]
 }

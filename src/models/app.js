@@ -28,7 +28,7 @@ export default {
       return { ...state, systemConfig: payload }
     }
   },
-  effects: {
+  sagas: {
     * getWelcomPageInfo (action, { simplePut, call, select, take, put }) {
       let systemConfig = yield select(state => state.app.systemConfig)
       if (systemConfig.sessionAlivePeriod < 0) {
@@ -43,5 +43,5 @@ export default {
       console.log('我取得參數檔就可以開始做事啦')
     }
   },
-  watchers: [ /* 在 app 啟動後 root saga 直接執行的 saga-effect 項目 (ex. fork, put ...) */]
+  effects: [ /* 在 app 啟動後 root saga 直接執行的 saga-effect 項目 (ex. fork, put ...) */]
 }
