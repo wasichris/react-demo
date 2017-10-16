@@ -29,9 +29,13 @@ export default {
   },
   effects: {
     * getWelcomPageInfo (action, { simplePut, call, select, take, put }) {
-
+      let systemConfig = yield select(state => state.app.systemConfig)
+      if (systemConfig.sessionAlivePeriod < 0) {
+        // wait for the config to be loaded
+        yield take('app/setSystemConfig')
+      }
       // take real config info from the store
-      const systemConfig = yield select(state => state.app.systemConfig)
+      systemConfig = yield select(state => state.app.systemConfig)
 
       // use config to do something here
       console.log('我取得參數檔就可以開始做事啦')
