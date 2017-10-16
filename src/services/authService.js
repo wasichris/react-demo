@@ -11,7 +11,7 @@ export default {
           email: 'wasi.chris@gmail.com',
           phone: '0911222333'
         }))
-      }, 5000)
+      }, 50)
     }).then(res => (res))
 
     // 呼叫端透過取得資料來判斷錯誤 const {res, error} = yield call(authService.getUserProfile, userId)

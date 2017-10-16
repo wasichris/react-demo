@@ -51,6 +51,7 @@
     "redux-actions": "^2.2.1",
     "redux-devtools-extension": "^2.13.2",
     "redux-saga": "^0.15.6",
-    "styled-components": "^2.2.1"
+    "styled-components": "^2.2.1",
+    "toastr": "^2.1.2"
   }
 }

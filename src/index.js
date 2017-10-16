@@ -5,7 +5,7 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { appReducers, appStoreEnhancers, appHistory, appSagaEffects, appMiddlewares } from 'setup'
+import { appReducers, appStoreEnhancers, appHistory, appSagaEffects, appMiddlewares, setupToastr } from 'setup'
 import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux'
 import { ConnectedRouter } from 'react-router-redux'
@@ -18,6 +18,9 @@ import 'bootstrap'
 
 // import app style
 import './styles/app.scss'
+
+// setup
+setupToastr()
 
 // create store
 const store = createStore(appReducers, compose(...appStoreEnhancers))

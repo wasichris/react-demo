@@ -4,6 +4,7 @@ import { Header, Container } from 'components'
 import { get } from 'lodash'
 import { connect } from 'react-redux'
 import { goBack } from 'react-router-redux'
+import toastr from 'toastr'
 
 const Home = props => {
   return <div>
@@ -27,7 +28,10 @@ const Home = props => {
           </p>
           <p>
             <a className='btn btn-primary' href='#' onClick={() => props.getWelcomPageInfo()} role='button'>Test saga take (see console) »</a>
-            {' [isMaintain] ' + props.systemConfig.isMaintain }
+            {' [isMaintain] ' + props.systemConfig.isMaintain}
+          </p>
+          <p>
+            <a className='btn btn-primary' href='#' onClick={() => toastr.success('Have fun storming the castle!', 'Miracle Max Says')} role='button'>Toastr msg »</a>
           </p>
         </div>
       </div>

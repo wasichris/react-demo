@@ -50,7 +50,7 @@ class WebpackBaseConfig {
           },
           {
             // 從最下 laoder 向上執行
-            test: /\.(sass|scss)$/,
+            test: /\.(css|sass|scss)$/,
             loaders: [
               // adds CSS to the DOM by injecting <style>
               { loader: 'style-loader' },
@@ -95,6 +95,7 @@ class WebpackBaseConfig {
           // containers: `${this.srcPathAbsolute}/containers/`,
           static: `${this.srcPathAbsolute}/static/`
         },
+        // 在 require 時可以不用打副檔名
         extensions: [
           '.js',
           '.jsx'

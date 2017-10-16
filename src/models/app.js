@@ -1,4 +1,5 @@
 import { take } from 'lodash'
+import toastr from 'toastr'
 
 export default {
   namespace: 'app',
@@ -33,6 +34,7 @@ export default {
       if (systemConfig.sessionAlivePeriod < 0) {
         // wait for the config to be loaded
         yield take('app/setSystemConfig')
+        toastr.success('I can do following job!!', 'Config Is Back')
       }
       // take real config info from the store
       systemConfig = yield select(state => state.app.systemConfig)
