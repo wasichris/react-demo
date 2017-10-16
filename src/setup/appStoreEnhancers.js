@@ -1,17 +1,11 @@
 import { applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { routerMiddleware } from 'react-router-redux'
-import { appHistory } from 'setup'
+import appMiddlewares from './appMiddlewares'
 
-// build the middleware for intercepting and dispatching navigation actions
-const reactRouterMiddleware = routerMiddleware(appHistory)
+// store enhancers that applies the given middleware
+const middlewares = Object.values(appMiddlewares).map(m => applyMiddleware(m))
 
-// apply all middlewares
-const middlewares = [
-  // sagaMiddleware,
-  reactRouterMiddleware
-].map(m => applyMiddleware(m))
-
+// arrange all enhancers
 const enableReduxDevTools = true
 const enhancers = [
   ...middlewares,

@@ -1,4 +1,4 @@
-import { appModels } from 'setup'
+import appModels from './appModels'
 import { each, mapKeys } from 'lodash'
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'

@@ -91,10 +91,9 @@ class WebpackBaseConfig {
         })],
       resolve: {
         alias: {
-          components: `${this.srcPathAbsolute}/components/`,
-          containers: `${this.srcPathAbsolute}/containers/`,
-          static: `${this.srcPathAbsolute}/static/`,
-          common: `${this.srcPathAbsolute}/common/`
+          // components: `${this.srcPathAbsolute}/components/`,
+          // containers: `${this.srcPathAbsolute}/containers/`,
+          static: `${this.srcPathAbsolute}/static/`
         },
         extensions: [
           '.js',

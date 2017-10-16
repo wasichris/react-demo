@@ -5,7 +5,7 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { appReducers, appStoreEnhancers, appHistory } from 'setup'
+import { appReducers, appStoreEnhancers, appHistory, appSagaEffects, appMiddlewares } from 'setup'
 import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux'
 import { ConnectedRouter } from 'react-router-redux'
@@ -21,6 +21,10 @@ import './styles/app.scss'
 
 // create store
 const store = createStore(appReducers, compose(...appStoreEnhancers))
+
+// run the saga
+const {sagaMiddleware} = appMiddlewares
+sagaMiddleware.run(appSagaEffects)
 
 // render app common method
 const renderApp = (App, domId = 'app') => {
