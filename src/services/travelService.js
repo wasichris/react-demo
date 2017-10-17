@@ -1,7 +1,3 @@
-import constantService from './constantService'
-
-var baseUrl = constantService.apiUrl
-
 export default {
 
   getUser: function () {

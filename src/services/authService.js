@@ -1,6 +1,4 @@
-import constantService from './constantService'
-
-var baseUrl = constantService.apiUrl
+import constant from 'constant'
 
 export default {
 
@@ -31,13 +29,13 @@ export default {
     }).then(res => (res))
   },
   login: function (loginUser) {
-    return $.post(`${baseUrl}/auth/login`, loginUser).promise().then(res => res)
+    return $.post(`${constant.apiUrl}/auth/login`, loginUser).promise().then(res => res)
   },
   logout: function () {
-    return $.get(`${baseUrl}/auth/logout`).promise().then(res => res)
+    return $.get(`${constant.apiUrl}/auth/logout`).promise().then(res => res)
   },
   isTokenAlive: function () {
-    return $.get(`${baseUrl}/auth/isTokenAlive`).promise().then(res => res)
+    return $.get(`${constant.apiUrl}/auth/isTokenAlive`).promise().then(res => res)
   }
 
 }

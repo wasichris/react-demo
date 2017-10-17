@@ -16,22 +16,22 @@ const Home = props => {
           <h1>Navbar examples</h1>
           <p>This {add(1, 2, 3)} example is a quick exercise to illustrate how the navbar and its contents work. Some navbars extend the width of the viewport, others are confined within a <code>.container</code>. For positioning of navbars, checkout the <a href='../navbar-top/'>top</a> and <a href='../navbar-top-fixed/'>fixed top</a> examples.</p>
           <p>
-            <a className='btn btn-primary' href='#' onClick={() => props.setUserName('Dispatched New Name')} role='button'>Dispatch »</a>
+            <button className='btn btn-primary' onClick={() => props.setUserName('Dispatched New Name')} role='button'>Dispatch »</button>
             {` Hi, I'm `}{props.userName}
           </p>
           <p>
-            <a className='btn btn-primary' href='#' onClick={() => props.goBack()} role='button'>Go back »</a>
+            <button className='btn btn-primary' onClick={() => props.goBack()} role='button'>Go back »</button>
           </p>
           <p>
-            <a className='btn btn-primary' href='#' onClick={() => props.getUserProfile('1041677')} role='button'>Get user profile »</a>
+            <button className='btn btn-primary' onClick={() => props.getUserProfile('1041677')} role='button'>Get user profile »</button>
             {' [email] ' + props.userProfile.email + ' [phone] ' + props.userProfile.phone}
           </p>
           <p>
-            <a className='btn btn-primary' href='#' onClick={() => props.getWelcomPageInfo()} role='button'>Test saga take (see console) »</a>
+            <button className='btn btn-primary' onClick={() => props.getWelcomPageInfo()} role='button'>Test saga take (see console) »</button>
             {' [isMaintain] ' + props.systemConfig.isMaintain}
           </p>
           <p>
-            <a className='btn btn-primary' href='#' onClick={() => toastr.success('Have fun storming the castle!', 'Miracle Max Says')} role='button'>Toastr msg »</a>
+            <button className='btn btn-primary' onClick={() => toastr.success('Have fun storming the castle!', 'Miracle Max Says')} role='button'>Toastr msg »</button>
           </p>
         </div>
       </div>

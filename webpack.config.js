@@ -22,7 +22,5 @@ module.exports = (evn) => {
 
   const loadedInstance = new LoadedConfig()
 
-  // Set the global environment
-  process.env.NODE_ENV = loadedInstance.env
   return loadedInstance.config
 }

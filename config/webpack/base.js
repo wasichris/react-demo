@@ -88,12 +88,19 @@ class WebpackBaseConfig {
           jQuery: 'jquery',
           'window.jQuery': 'jquery',
           Popper: ['popper.js', 'default']
+        }),
+        // 定義全域變數值
+        new webpack.DefinePlugin({
+          'process.env': {
+            'NODE_ENV': JSON.stringify(this.env)
+          }
         })],
       resolve: {
         alias: {
           // components: `${this.srcPathAbsolute}/components/`,
           // containers: `${this.srcPathAbsolute}/containers/`,
-          static: `${this.srcPathAbsolute}/static/`
+          static: `${this.srcPathAbsolute}/static/`,
+          constant: `${this.srcPathAbsolute}/constant/`
         },
         // 在 require 時可以不用打副檔名
         extensions: [

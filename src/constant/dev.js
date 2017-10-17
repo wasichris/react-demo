@@ -1,6 +1,7 @@
 export default {
+  environment: 'dev',
   siteName: 'react demo site',
-  apiUrl: `http://localhost:8080`,
+  apiUrl: `http://localhost:9527`,
   localStorage: {
     tokenKey: 'jwt-token'
   }

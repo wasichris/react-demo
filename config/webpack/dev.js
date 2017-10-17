@@ -30,7 +30,7 @@ class WebpackDevConfig extends WebpackBaseConfig {
     this.config = {
       devtool: 'cheap-module-source-map',
       entry: [
-        'babel-polyfill', // 需要加上這個才可以在 IE 使用
+        'babel-polyfill', // 需要加上這個才可以在 IE 使用 (還沒進入 index.js 就表示尚未 import polyfill ， 所以執行 react hot loader 就會噴錯)
         'react-hot-loader/patch',
         './index.js'
       ],
