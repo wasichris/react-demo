@@ -36,6 +36,9 @@ const Home = props => {
           <p>
             <button className='btn btn-primary' onClick={() => props.login()} role='button'>Login »</button>
           </p>
+          <p>
+            <button className='btn btn-primary' onClick={() => props.addConfirmModal()} role='button'>Leave Confirm »</button>
+          </p>
         </div>
       </div>
 
@@ -54,7 +57,13 @@ const mapDispatchToProps = dispatch => ({
   goBack: () => dispatch(goBack()),
   getUserProfile: (userId) => dispatch({ type: 'profile/getUserProfile', payload: userId }),
   getWelcomPageInfo: () => dispatch({ type: 'app/getWelcomPageInfo' }),
-  login: (userId) => dispatch({ type: 'profile/login', payload: { userId: 'uuuu', password: 'pppp' } })
+  login: (userId) => dispatch({ type: 'profile/login', payload: { userId: 'uuuu', password: 'pppp' } }),
+  addConfirmModal: () => {
+    const title = 'Leave System'
+    const content = 'Are you sure to leave system?'
+    const okRedirect = '/Login'
+    dispatch({ type: 'app/addConfirmModal', payload: { title, content, okRedirect } })
+  }
 })
 
 // export default Home

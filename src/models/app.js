@@ -1,4 +1,4 @@
-import { take } from 'lodash'
+import { take, drop } from 'lodash'
 import toastr from 'toastr'
 
 export default {
@@ -8,7 +8,8 @@ export default {
     systemConfig: {
       sessionAlivePeriod: -1,
       isMaintain: true
-    }
+    },
+    confirmModals: []
   },
   reducers: {
     addHistory (state, { payload }) {
@@ -26,6 +27,16 @@ export default {
     },
     setSystemConfig (state, { payload }) {
       return { ...state, systemConfig: payload }
+    },
+    addConfirmModal (state, { payload: { title, content, okRedirect, okAction } }) {
+      let modals = state.confirmModals
+      modals.push({ title, content, okRedirect, okAction })
+      return { ...state, confirmModals: [...modals] }
+    },
+    removeFirstConfirmModal (state, { payload }) {
+      let modals = state.confirmModals
+      let newModals = drop(modals, 1)
+      return { ...state, confirmModals: newModals }
     }
   },
   sagas: {
