@@ -33,6 +33,9 @@ const Home = props => {
           <p>
             <button className='btn btn-primary' onClick={() => toastr.success('Have fun storming the castle!', 'Miracle Max Says')} role='button'>Toastr msg »</button>
           </p>
+          <p>
+            <button className='btn btn-primary' onClick={() => props.login()} role='button'>Login »</button>
+          </p>
         </div>
       </div>
 
@@ -50,7 +53,8 @@ const mapDispatchToProps = dispatch => ({
   setUserName: (newName) => dispatch({ type: 'profile/setUserName', payload: newName }),
   goBack: () => dispatch(goBack()),
   getUserProfile: (userId) => dispatch({ type: 'profile/getUserProfile', payload: userId }),
-  getWelcomPageInfo: () => dispatch({ type: 'app/getWelcomPageInfo' })
+  getWelcomPageInfo: () => dispatch({ type: 'app/getWelcomPageInfo' }),
+  login: (userId) => dispatch({ type: 'profile/login', payload: { userId: 'uuuu', password: 'pppp' } })
 })
 
 // export default Home

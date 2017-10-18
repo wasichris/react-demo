@@ -1,15 +1,22 @@
 import appModels from './appModels'
 import { each, flatten } from 'lodash'
-import { authService } from 'services'
 import { put, call, takeEvery, select, take, fork } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import invariant from 'invariant'
+import api from '../services/api'
+import toastr from 'toastr'
 
 function extractModelEffects (model) {
   const { namespace, sagas, effects = [] } = model
   each(sagas, (saga, k) => {
     function * sagaFunction (action) {
-      yield saga(action, { simplePut: enableSimplePut(namespace), put, call, select, delay, take })
+      try {
+        yield saga(action, { simplePut: enableSimplePut(namespace), put, call, select, delay, take })
+      } catch (error) {
+        // 若錯誤沒有在各 saga funtion 中使用 try catch 捕捉，就會統一於此處理錯誤
+        toastr.error('全域 SAGA 錯誤攔截', '錯誤訊息')
+        console.log(error)
+      }
     }
 
     function * watcher () {
@@ -67,12 +74,13 @@ function combineModelEffects (models, effects) {
 function * loadSystemConfig () {
   try {
     // get system config
-    const config = yield call(authService.getSystemConfig)
+    const config = yield call(api.CR000103)
     // 1. tell the store to save the system config
     // 2. activate other executing saga which use => yield take('app/setSystemConfig') to waits for config to be loaded
     yield put({ type: 'app/setSystemConfig', payload: config }) // reducer, not saga!!
   } catch (error) {
-    console.log('error:', error)
+    // 這邊要阻斷系統繼續進行
+    toastr.error('系統參數取得錯誤!!', '錯誤訊息')
   }
 }
 
