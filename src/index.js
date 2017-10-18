@@ -10,8 +10,8 @@ import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux'
 import { ConnectedRouter } from 'react-router-redux'
 
-// import main router
-import MainRouter from './index.router'
+// import app - main router
+import App from './containers/App'
 
 // import bootstrap
 import 'bootstrap'
@@ -44,7 +44,7 @@ const renderApp = (App, domId = 'app') => {
 }
 
 // render app router
-renderApp(MainRouter)
+renderApp(App)
 
 // config hot reload
-module.hot && module.hot.accept('./index.router', () => renderApp(MainRouter))
+module.hot && module.hot.accept('./containers/App', () => renderApp(App))
