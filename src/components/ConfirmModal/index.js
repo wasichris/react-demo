@@ -10,10 +10,9 @@ class ConfirmModal extends React.Component {
 
   initModal = () => {
     const self = this
-    const modelDOM = ReactDOM.findDOMNode(this)
-    $(modelDOM).modal('show')
-    $(modelDOM).off('hidden.bs.modal') // remove event handlers
-    $(modelDOM).on('hidden.bs.modal', function (e) {
+    $(self.node).modal('show')
+    $(self.node).off('hidden.bs.modal') // remove event handlers
+    $(self.node).on('hidden.bs.modal', function (e) {
       self.props.onClose()
     })
   }
@@ -29,7 +28,7 @@ class ConfirmModal extends React.Component {
 
   render () {
     const { title, content, onCancel, onOk } = this.props
-    return <div className='modal fade' data-backdrop="static" id='exampleModal' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+    return <div ref={node => this.node = node} className='modal fade' data-backdrop="static" id='exampleModal' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
       <div className='modal-dialog' role='document'>
         <div className='modal-content'>
           <div className='modal-header'>
