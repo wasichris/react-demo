@@ -15,11 +15,14 @@
   "author": "chris",
   "license": "ISC",
   "standard": {
-    "globals": [ "$" ],
+    "globals": [
+      "$"
+    ],
     "parser": "babel-eslint"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-imports": "^1.4.1",
     "babel-polyfill": "^6.23.0",
@@ -34,6 +37,8 @@
     "react-hot-loader": "^3.0.0-beta.7",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
+    "standard": "^10.0.3",
+    "standard-loader": "^6.0.1",
     "style-loader": "^0.19.0",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"

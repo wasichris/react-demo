@@ -44,6 +44,18 @@ class WebpackBaseConfig {
         // 所以 loader 就扮演很重要的角色來進行轉換
         rules: [
           {
+            // set up standard-loader as a preloader
+            enforce: 'pre',
+            test: /\.(js|jsx)$/,
+            loader: 'standard-loader',
+            options: {
+              // Emit errors instead of warnings (default = false)
+              error: false,
+              // enable snazzy output (default = true)
+              snazzy: true
+            }
+          },
+          {
             test: /\.(js|jsx)$/,
             include: [].concat(this.includedPackages, [this.srcPathAbsolute]),
             loaders: [{ loader: 'babel-loader' }]
