@@ -14,6 +14,10 @@
   ],
   "author": "chris",
   "license": "ISC",
+  "standard": {
+    "globals": [ "$" ],
+    "parser": "babel-eslint"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",

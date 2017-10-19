@@ -1,13 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import styled from 'styled-components'
-import get from 'lodash/get'
 
 class ConfirmModal extends React.Component {
-  constructor (props) {
-    super(props)
-  }
-
   initModal = () => {
     const self = this
     $(self.node).modal('show')
@@ -21,14 +14,14 @@ class ConfirmModal extends React.Component {
     this.initModal()
   }
 
-  componentWillReceiveProps(){
+  componentWillReceiveProps () {
     // 屬性變動表示需要重新啟動新視窗
     this.initModal()
   }
 
   render () {
     const { title, content, onCancel, onOk } = this.props
-    return <div ref={node => this.node = node} className='modal fade' data-backdrop="static" id='exampleModal' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+    return <div ref={node => { this.node = node }} className='modal fade' data-backdrop='static' id='exampleModal' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
       <div className='modal-dialog' role='document'>
         <div className='modal-content'>
           <div className='modal-header'>
