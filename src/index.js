@@ -5,9 +5,8 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { appReducers, appStoreEnhancers, appHistory, appSagaEffects, appMiddlewares, setupToastr } from 'setup'
+import { appStore, appHistory, appSagaEffects, appMiddlewares } from 'setup'
 import { Provider } from 'react-redux'
-import { createStore, compose } from 'redux'
 import { ConnectedRouter } from 'react-router-redux'
 
 // import app - main router
@@ -19,21 +18,15 @@ import 'bootstrap'
 // import app style
 import './styles/app.scss'
 
-// setup
-setupToastr()
-
-// create store
-const store = createStore(appReducers, compose(...appStoreEnhancers))
-
 // run the saga
-const {sagaMiddleware} = appMiddlewares
+const { sagaMiddleware } = appMiddlewares
 sagaMiddleware.run(appSagaEffects)
 
 // render app common method
 const renderApp = (App, domId = 'app') => {
   ReactDOM.render(
     <AppContainer>
-      <Provider store={store}>
+      <Provider store={appStore}>
         <ConnectedRouter history={appHistory}>
           <App />
         </ConnectedRouter>

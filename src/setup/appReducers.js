@@ -3,6 +3,7 @@ import { each, mapKeys } from 'lodash'
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import { handleActions } from 'redux-actions'
+import { loadingBarReducer } from 'react-redux-loading-bar'
 
 // extra model reducers
 function extractModelReducers (model) {
@@ -33,7 +34,8 @@ function combineModelReducers (models, reducers) {
 
 // define extra reducers
 const extraReducers = {
-  router: routerReducer
+  router: routerReducer,
+  loadingBar: loadingBarReducer
   // form: formReducer, intl: intlReducer
 }
 

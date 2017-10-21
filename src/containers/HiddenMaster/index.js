@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { get } from 'lodash'
 import { push } from 'react-router-redux'
 import { ConfirmModal } from 'components'
+import LoadingBar from 'react-redux-loading-bar'
 
 class HiddenMaster extends Component {
   render () {
@@ -10,6 +11,9 @@ class HiddenMaster extends Component {
 
     return (
       <div>
+
+        {/* 呈現讀取中狀態條 */}
+        <LoadingBar style={{ backgroundColor: 'white', height: '3px', zIndex: 999 }} />
 
         {/* 共同使用的確認視窗組件 */}
         {confirmModals && confirmModals.length > 0 &&
