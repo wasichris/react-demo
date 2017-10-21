@@ -13,9 +13,9 @@ function extractModelEffects (model) {
       try {
         yield saga(action, { simplePut: enableSimplePut(namespace), put, call, select, delay, take })
       } catch (error) {
-        // 若錯誤沒有在各 saga funtion 中使用 try catch 捕捉，就會統一於此處理錯誤
-        toastr.error('全域 SAGA 錯誤攔截', '錯誤訊息')
-        console.log(error)
+        // 若錯誤沒有在各 saga funtion 中使用 try catch 捕捉，最終就會於此捕捉到錯誤
+        // 有關於 http request 錯誤處理已經集中到 setupAxios.js 中 (於此僅輸出訊息)
+        console.log('saga error:', error)
       }
     }
 
