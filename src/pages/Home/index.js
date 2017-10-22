@@ -5,6 +5,7 @@ import { get } from 'lodash'
 import { connect } from 'react-redux'
 import { goBack } from 'react-router-redux'
 import toastr from 'toastr'
+import { loginRequest, logout } from '../../models/auth.effect'
 
 const Home = props => {
   return <div>
@@ -34,7 +35,10 @@ const Home = props => {
             <button className='btn btn-primary' onClick={() => toastr.success('Have fun storming the castle!', 'Miracle Max Says')} role='button'>Toastr msg »</button>
           </p>
           <p>
-            <button className='btn btn-primary' onClick={() => props.login()} role='button'>Login »</button>
+            <button className='btn btn-primary' onClick={() => props.login('id', 'pwd')} role='button'>Login »</button>
+          </p>
+          <p>
+            <button className='btn btn-primary' onClick={() => props.logout()} role='button'>Logout »</button>
           </p>
           <p>
             <button className='btn btn-primary' onClick={() => props.addConfirmModal()} role='button'>Leave Confirm »</button>
@@ -57,7 +61,8 @@ const mapDispatchToProps = dispatch => ({
   goBack: () => dispatch(goBack()),
   getUserProfile: (userId) => dispatch({ type: 'profile/getUserProfile', payload: userId }),
   getWelcomPageInfo: () => dispatch({ type: 'app/getWelcomPageInfo' }),
-  login: (userId) => dispatch({ type: 'profile/login', payload: { userId: 'uuuu', password: 'pppp' } }),
+  login: (userId, password) => dispatch(loginRequest(userId, password)),
+  logout: () => dispatch(logout()),
   addConfirmModal: () => {
     const title = 'Leave System'
     const content = 'Are you sure to leave system?'
