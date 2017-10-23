@@ -1,7 +1,11 @@
-import React from 'react'
+// import React from 'react'
+import React, { Component } from 'react'
 import { Switch, Redirect } from 'react-router'
 import { Route } from 'react-router-dom'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { get } from 'lodash'
+import { LoadingIndicator } from 'components'
 
 // impot pages
 import { Home, Playground, Login } from 'pages'
@@ -14,29 +18,43 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `
 
-const App = props => {
-  return (
-    <Wrapper>
+export class App extends Component {
+  render () {
+    const { isReady2Launch } = this.props
+    return (
+      isReady2Launch === false
+        ? <LoadingIndicator />
+        : <Wrapper>
 
-      {/* 功能性的共享隱藏區塊 */}
-      <HiddenMaster />
+          {/* 功能性的共享隱藏區塊 */}
+          <HiddenMaster />
 
-      <Switch>
-        {/* 登入頁面 */}
-        <Route path='/Login' component={Login} />
+          <Switch>
+            {/* 登入頁面 */}
+            <Route path='/Login' component={Login} />
 
-        {/* HOME頁面 */}
-        <Route path='/Home' component={Home} />
+            {/* HOME頁面 */}
+            <Route path='/Home' component={Home} />
 
-        {/* 範例頁面 - 預設A功能 */}
-        <Redirect exact from='/Playground' to='/Playground/A' />
-        <Route path='/Playground' component={Playground} />
+            {/* 範例頁面 - 預設A功能 */}
+            <Redirect exact from='/Playground' to='/Playground/A' />
+            <Route path='/Playground' component={Playground} />
 
-        {/* 無對應路由時轉到HOME頁面 */}
-        <Redirect to='/Home' />
-      </Switch>
-    </Wrapper>
-  )
+            {/* 無對應路由時轉到HOME頁面 */}
+            <Redirect to='/Home' />
+
+          </Switch>
+
+        </Wrapper>
+    )
+  }
 }
 
-export default App
+const mapStateToProps = state => ({
+  isReady2Launch: get(state, 'app.isReady2Launch')
+})
+
+const mapDispatchToProps = dispatch => ({
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

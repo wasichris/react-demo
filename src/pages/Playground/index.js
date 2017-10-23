@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { Route, Redirect, NavLink, Switch } from 'react-router-dom'
 
 import { Header, Container } from 'components'
-import { NotFound } from 'pages'
 
-export default class Home extends Component {
+export default class Playground extends Component {
   componentDidMount () {
 
   }
@@ -12,7 +11,7 @@ export default class Home extends Component {
   render () {
     const { match } = this.props
     return (
-      <div id='pageHome'>
+      <div>
         <Header />
         <Container>
 
@@ -34,9 +33,9 @@ export default class Home extends Component {
           {/* 功能顯示區塊 */}
           <Container.Content>
             <Switch>
-              <Route path={`${match.url}/A`} component={NotFound} />
-              <Route path={`${match.url}/B`} component={NotFound} />
-              <Route path={`${match.url}/C`} component={NotFound} />
+              <Route path={`${match.url}/A`} component={() => <div>AAAAAAAA</div>} />
+              <Route path={`${match.url}/B`} component={() => <div>BBBBBBBB</div>} />
+              <Route path={`${match.url}/C`} component={() => <div>CCCCCCCC</div>} />
               <Redirect to={`${match.url}/A`} /> {/* 預設頁面 */}
             </Switch>
           </Container.Content>

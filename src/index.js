@@ -8,6 +8,7 @@ import { AppContainer } from 'react-hot-loader'
 import { appStore, appHistory, appSagaEffects, appMiddlewares } from 'setup'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
+import { Route } from 'react-router-dom'
 
 // import app - main router
 import App from './containers/App'
@@ -28,7 +29,7 @@ const renderApp = (App, domId = 'app') => {
     <AppContainer>
       <Provider store={appStore}>
         <ConnectedRouter history={appHistory}>
-          <App />
+          <Route path='/' component={App} />
         </ConnectedRouter>
       </Provider>
     </AppContainer>,

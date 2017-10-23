@@ -1,5 +1,4 @@
 import { take, drop } from 'lodash'
-import toastr from 'toastr'
 
 export default {
   namespace: 'app',
@@ -9,7 +8,8 @@ export default {
       sessionAlivePeriod: -1,
       isMaintain: true
     },
-    confirmModals: []
+    confirmModals: [],
+    isReady2Launch: false
   },
   reducers: {
     addHistory (state, { payload }) {
@@ -37,22 +37,12 @@ export default {
       let modals = state.confirmModals
       let newModals = drop(modals, 1)
       return { ...state, confirmModals: newModals }
+    },
+    setIsReady2Lanuch (state, { payload }) {
+      return { ...state, isReady2Launch: payload }
     }
   },
   sagas: {
-    * getWelcomPageInfo (action, { simplePut, call, select, take, put }) {
-      let systemConfig = yield select(state => state.app.systemConfig)
-      if (systemConfig.sessionAlivePeriod < 0) {
-        // wait for the config to be loaded
-        yield take('app/setSystemConfig')
-        toastr.success('I can do following job!!', 'Config Is Back')
-      }
-      // take real config info from the store
-      systemConfig = yield select(state => state.app.systemConfig)
-
-      // use config to do something here
-      console.log('我取得參數檔就可以開始做事啦')
-    }
   },
   effects: [ /* 在 app 啟動後 root saga 直接執行的 saga-effect 項目 (ex. fork, put ...) */]
 }
