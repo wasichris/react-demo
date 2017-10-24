@@ -35,7 +35,8 @@ class WebpackDevConfig extends WebpackBaseConfig {
         './index.js'
       ],
       output: {
-        filename: 'output.[hash].bundle.js'
+        filename: 'output.[hash].bundle.js',
+        publicPath: '/'
       },
       devServer: {
         publicPath: '/',
@@ -55,7 +56,6 @@ class WebpackDevConfig extends WebpackBaseConfig {
         })
       ])
     }
-    this.config.output.publicPath = './'
   }
 }
 

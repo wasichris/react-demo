@@ -90,8 +90,10 @@ class WebpackBaseConfig {
         path: path.resolve(__dirname, '../../dist/assets'),
         // 輸出檔案名稱 (使用chunkhash避免快取問題)
         filename: '[name].[chunkhash].bundle.js',
-        // 基於HTML頁面的相對路徑
-        publicPath: 'assets/'
+        // 如果使用 'assets/' (基於HTML頁面的相對路徑)
+        // 當 browserHistory 於 server side 套用 rewrite 機制會有問題
+        // 因此在此使用相對於服務(server-relative)的相對路徑
+        publicPath: '/assets/'
       },
       plugins: [
         new webpack.ProvidePlugin({

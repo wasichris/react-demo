@@ -50,10 +50,11 @@ function * authorize (userId, password) {
 
 // main effect - login flow
 function * loginFlow () {
-  while (true) {
-    // [執行] 進入網站前所需處理動作 (阻塞)
-    const isDone = yield call(preProcess)
-    if (isDone) {
+  // [執行] 進入網站前所需處理動作 (阻塞)
+  var isDone = yield call(preProcess)
+  if (isDone) {
+    // 完成前處理後進入主要流程
+    while (true) {
       // [等待] 登入要求訊號
       const { payload: { userId, password } } = yield take(LOGIN_REQUEST)
 
@@ -69,6 +70,8 @@ function * loginFlow () {
         toastr.success('已經登出系統')
       }
     }
+  } else {
+    toastr.error('無法取得必要資訊，請稍後再試')
   }
 }
 
