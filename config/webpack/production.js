@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBaseConfig = require('./Base')
 const chalk = require('chalk')
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 function showEnvironment () {
   var str = `
@@ -36,7 +37,21 @@ class WebpackDistConfig extends WebpackBaseConfig {
         // 將很少變化的常用庫（react、lodash、redux）等與業務代碼分割
         // 可以避免在更板時，用戶端又再次取得相同檔案造成 Server 端資源耗費
         vendor: [
-          'react'
+          'react',
+          'react-dom',
+          'react-router-dom',
+          'react-router-redux',
+          'react-hot-loader',
+          'react-redux',
+          'jquery',
+          'redux-saga',
+          'axios',
+          'bootstrap',
+          'popper.js',
+          'styled-components',
+          'redux-actions',
+          'toastr',
+          'babel-polyfill'
         ]
       },
       // 加入 default 的 plugins 設定
@@ -50,7 +65,8 @@ class WebpackDistConfig extends WebpackBaseConfig {
         //   names: ['vendor', 'runtime']
         // }),
         new webpack.optimize.CommonsChunkPlugin({
-          name: 'vendor'
+          name: 'vendor',
+          minChunks: Infinity
         }),
         new webpack.optimize.CommonsChunkPlugin({
           name: 'runtime'
@@ -78,8 +94,19 @@ class WebpackDistConfig extends WebpackBaseConfig {
             minifyCSS: true,
             minifyURLs: true
           }
-        })
-        // new webpack.NoErrorsPlugin()
+        }),
+        // 分析 webpack 打包性能分析的插件
+        new BundleAnalyzerPlugin({
+          // Change to `static` mode, a single HTML file with bundle report will be generated.
+          analyzerMode: 'disabled',
+          // Path to bundle report file that will be generated in `static` mode.
+          // Relative to bundles output directory.
+          reportFilename: 'report.html',
+          // Automatically open report in default browser
+          openAnalyzer: true
+        }),
+        // 確保輸出的 assets 不會包含錯誤在裡面，在 compile 階段，有錯誤出現就終止。
+        new webpack.NoEmitOnErrorsPlugin()
       ])
     }
 

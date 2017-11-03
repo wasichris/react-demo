@@ -4,6 +4,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBaseConfig = require('./base')
 const chalk = require('chalk')
+const webpack = require('webpack')
 
 function showEnvironment () {
   var str = `
@@ -53,7 +54,9 @@ class WebpackDevConfig extends WebpackBaseConfig {
       plugins: this.defaultSettings.plugins.concat([
         new HtmlWebpackPlugin({
           template: 'index.html'
-        })
+        }),
+        // HMR 更新時，會在瀏覽器上顯示異動的模組名稱，建議在開發階段使用。
+        new webpack.NamedModulesPlugin()
       ])
     }
   }
