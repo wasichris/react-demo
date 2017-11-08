@@ -20,7 +20,7 @@ const SideBar = ({ children }) => <nav className='col-sm-3 col-md-2 d-none d-sm-
 </nav>
 
 // 功能頁面顯示區塊
-const Content = ({ children }) => <main className='col-sm-9 ml-sm-auto col-md-10 pt-3' role='main'>
+const Content = ({ children }) => <main className='col-sm-9 ml-sm-auto col-md-10' role='main'>
   {children}
 </main>
 

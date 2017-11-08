@@ -36,8 +36,8 @@ export class App extends Component {
             {/* HOME頁面 */}
             <Route path='/Home' component={Home} />
 
-            {/* 範例頁面 - 預設A功能 */}
-            <Redirect exact from='/Playground' to='/Playground/A' />
+            {/* 範例頁面 - 預設 StyledComponents 功能 */}
+            <Redirect exact from='/Playground' to='/Playground/StyledComponents' />
             <Route path='/Playground' component={Playground} />
 
             {/* 無對應路由時轉到HOME頁面 */}
