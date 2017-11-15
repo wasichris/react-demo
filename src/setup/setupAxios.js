@@ -13,6 +13,13 @@ import { storage } from 'services'
 axios.interceptors.request.use(function (config) {
   // before request is sent
   appStore.dispatch(showLoading())
+
+  // request with authorization in header
+  var currentToken = storage.token
+  if (currentToken) {
+    config.headers.common['Authorization'] = 'Bearer ' + currentToken
+  }
+
   return config
 }, function (error) {
   // request error
