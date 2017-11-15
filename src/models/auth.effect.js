@@ -1,11 +1,13 @@
 import toastr from 'toastr'
 import api from '../services/api'
 import { put, call, take, fork } from 'redux-saga/effects'
+import { push, replace } from 'react-router-redux'
+import { storage } from 'services'
 
 const namespace = 'auth/effect/'
 
 // action name
-const LOGIN_REQUEST = `${namespace}LOGIN_REQUEST`
+const LOGIN = `${namespace}LOGIN`
 const LOGIN_SUCCESS = `${namespace}LOGIN_SUCCESS`
 const LOGIN_ERROR = `${namespace}LOGIN_ERROR`
 const LOGIN_FAILD = `${namespace}LOGIN_FAILD`
@@ -14,7 +16,7 @@ const PREPROCESS_SUCCESS = `${namespace}PREPROCESS_SUCCESS`
 const PREPROCESS_ERROR = `${namespace}PREPROCESS_ERROR`
 
 // action creator
-const loginRequest = (userId, password) => ({ type: LOGIN_REQUEST, payload: { userId, password } })
+const login = (account, password) => ({ type: LOGIN, payload: { account, password } })
 const logout = () => ({ type: LOGOUT })
 
 // generator functions
@@ -32,18 +34,23 @@ function * preProcess () {
   }
 }
 
-function * authorize (userId, password) {
+function * authorize (account, password) {
   try {
-    const res = yield call(api.CR000101, { userId, password })
+    const res = yield call(api.CR000101, { account, password })
     if (res.isPass) {
-      toastr.success('登入成功!!')
-      yield put({ type: LOGIN_SUCCESS })
+      // storage token to localstorage
+      storage.token = res.token
+      // set up login user needed info
       yield put({ type: 'auth/setIsLogin', payload: true })
+      // luanch home page (everything is done)
+      yield put({ type: LOGIN_SUCCESS })
+      yield put(replace('/Home'))
     } else {
       toastr.warning('登入失敗!!')
       yield put({ type: LOGIN_FAILD })
     }
   } catch (error) {
+    toastr.error('登入發生錯誤!!')
     yield put({ type: LOGIN_ERROR, error })
   }
 }
@@ -56,17 +63,19 @@ function * loginFlow () {
     // 完成前處理後進入主要流程
     while (true) {
       // [等待] 登入要求訊號
-      const { payload: { userId, password } } = yield take(LOGIN_REQUEST)
+      const { payload: { account, password } } = yield take(LOGIN)
 
       // [執行] 登入 (非阻塞)
-      yield fork(authorize, userId, password)
+      yield fork(authorize, account, password)
 
       // [等待] 多種訊號同時
       // 1. 等待 LOGOUT 訊號: 登入成功當然就等待被登出囉
       // 2. 等待 LOGIN_ERROR / LOGIN_FAILD 訊號: 登入失敗隨即被捕捉到此訊號，重新回到等待登入要求訊號狀態
       const { type } = yield take([LOGOUT, LOGIN_ERROR, LOGIN_FAILD])
       if (type === LOGOUT) {
+        storage.token = null
         yield put({ type: 'auth/setIsLogin', payload: false })
+        yield put(push('/Login'))
         toastr.success('已經登出系統')
       }
     }
@@ -75,4 +84,4 @@ function * loginFlow () {
   }
 }
 
-export { loginFlow, loginRequest, logout }
+export { loginFlow, login, logout }

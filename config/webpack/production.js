@@ -51,7 +51,10 @@ class WebpackDistConfig extends WebpackBaseConfig {
           'styled-components',
           'redux-actions',
           'toastr',
-          'babel-polyfill'
+          'babel-polyfill',
+          'redux-form',
+          'recompose',
+          'classnames'
         ]
       },
       // 加入 default 的 plugins 設定

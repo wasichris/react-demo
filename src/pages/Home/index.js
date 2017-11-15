@@ -4,11 +4,12 @@ import { Header, Container } from 'components'
 import { get } from 'lodash'
 import { connect } from 'react-redux'
 import { goBack } from 'react-router-redux'
-import { loginRequest, logout } from '../../models/auth.effect'
+import { login, logout } from '../../models/auth.effect'
 
 const Home = props => {
+  const { logout } = props
   return <div>
-    <Header />
+    <Header doLogout={logout} />
     <Container>
 
       <div className='jumbotron'>
@@ -52,7 +53,7 @@ const mapDispatchToProps = dispatch => ({
   setUserName: (newName) => dispatch({ type: 'profile/setUserName', payload: newName }),
   goBack: () => dispatch(goBack()),
   getUserProfile: (userId) => dispatch({ type: 'profile/getUserProfile', payload: userId }),
-  login: (userId, password) => dispatch(loginRequest(userId, password)),
+  login: (userId, password) => dispatch(login(userId, password)),
   logout: () => dispatch(logout()),
   addConfirmModal: () => {
     const title = 'Leave System'

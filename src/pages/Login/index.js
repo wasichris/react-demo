@@ -1,24 +1,26 @@
 import React from 'react'
-import './Login.scss'
+import styled from 'styled-components'
+import { LoginForm } from 'containers'
+
+const Container = styled.div`
+ height: 100%;
+ padding-top: 40px;
+ background: #eee;
+`
+
+const LoginWrap = styled.div`
+  background: white;
+  padding: 20px;
+  min-width: 300px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24)
+`
 
 const Login = props => {
-  return <div id='login-page' className='container'>
-
-    <form className='form-signin'>
-      <h2 className='form-signin-heading'>Please sign in</h2>
-      <label for='inputEmail' className='sr-only'>Email address</label>
-      <input type='email' id='inputEmail' className='form-control' placeholder='Email address' required='' autofocus='' />
-      <label for='inputPassword' className='sr-only'>Password</label>
-      <input type='password' id='inputPassword' className='form-control' placeholder='Password' required='' />
-      <div className='checkbox'>
-        <label>
-          <input type='checkbox' value='remember-me' /> Remember me
-          </label>
-      </div>
-      <button className='btn btn-lg btn-primary btn-block' type='submit'>Sign in</button>
-    </form>
-
-  </div>
+  return <Container className='d-flex justify-content-center align-items-start'>
+    <LoginWrap>
+      <LoginForm />
+    </LoginWrap>
+  </Container>
 }
 
 export default Login

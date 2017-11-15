@@ -13,6 +13,12 @@ function extractModelEffects (model) {
       } catch (error) {
         // 若錯誤沒有在各 saga funtion 中使用 try catch 捕捉，最終就會於此捕捉到錯誤
         // 有關於 http request 錯誤處理已經集中到 setupAxios.js 中 (於此僅輸出訊息)
+
+        // [TODO]
+        // 有可能會在處理邏輯的時候出錯阿!!!!!!!!! 所以還是需要拋出錯誤吧!!!!!!!!!!!
+        // 應該在 root componet 中捕捉全局得錯誤 (顯示系統發生錯誤之類的通用錯誤訊息)
+        // 網路錯誤一樣會拋出，看需要個別處理 or 全局處理
+        // 至於 http interceptor 就放置通用處置方式(ex. 401 直接轉登入頁)
         console.log('saga error:', error)
       }
     }

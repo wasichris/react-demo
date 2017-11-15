@@ -1,8 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  static propTypes = {
+    doLogout: PropTypes.func.isRequired
+  }
+
   render () {
+    const { doLogout } = this.props
     return (
       <div>
 
@@ -31,7 +37,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               </ul>
 
               {/* 系統功能選單 */}
-              <a className='btn btn-outline-secondary btn-sm' href='#' role='button'>logout</a>
+              <a className='btn btn-outline-secondary btn-sm' href='#' role='button' onClick={doLogout}>logout</a>
 
             </div>
           </div>

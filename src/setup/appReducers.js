@@ -4,6 +4,7 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import { handleActions } from 'redux-actions'
 import { loadingBarReducer } from 'react-redux-loading-bar'
+import { reducer as formReducer } from 'redux-form'
 
 // extra model reducers
 function extractModelReducers (model) {
@@ -35,8 +36,8 @@ function combineModelReducers (models, reducers) {
 // define extra reducers
 const extraReducers = {
   router: routerReducer,
-  loadingBar: loadingBarReducer
-  // form: formReducer, intl: intlReducer
+  loadingBar: loadingBarReducer,
+  form: formReducer //, intl: intlReducer
 }
 
 // app reducers = combine all model reducers + extra reducers
