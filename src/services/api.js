@@ -12,5 +12,9 @@ export default {
   /** 取得系統設定參數 */
   CR000103: () => {
     return get('/CR000103')
+  },
+  /** 檢查 Token 是否有效 */
+  CR000104: () => {
+    return get('/CR000104')
   }
 }

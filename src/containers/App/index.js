@@ -5,11 +5,15 @@ import { Route } from 'react-router-dom'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
-import { LoadingIndicator } from 'components'
+import { LoadingIndicator, Header } from 'components'
+import { logout } from 'models/auth.effect'
 
-// impot pages
+// import pages
 import { Home, Playground, Login } from 'pages'
+
+// import containers
 import HiddenMaster from '../HiddenMaster'
+import PrivateRoute from '../PrivateRoute'
 
 const Wrapper = styled.div`
   position: static;
@@ -21,7 +25,7 @@ const Wrapper = styled.div`
 
 export class App extends Component {
   render () {
-    const { isReady2Launch } = this.props
+    const { isReady2Launch, isLogin, logout } = this.props
     return (
       isReady2Launch === false
         ? <LoadingIndicator />
@@ -30,15 +34,17 @@ export class App extends Component {
           {/* 功能性的共享隱藏區塊 */}
           <HiddenMaster />
 
+          {/* 登入後才顯示 Header 區塊 */}
+          {isLogin && <Header doLogout={logout} />}
+
           <Switch>
             {/* 登入頁面 */}
             <Route path='/Login' component={Login} />
 
             {/* HOME頁面 */}
-            <Route path='/Home' component={Home} />
+            <PrivateRoute path='/Home' component={Home} />
 
-            {/* 範例頁面 - 預設 StyledComponents 功能 */}
-            <Redirect exact from='/Playground' to='/Playground/StyledComponents' />
+            {/* 範例頁面 */}
             <Route path='/Playground' component={Playground} />
 
             {/* 無對應路由時轉到HOME頁面 */}
@@ -52,10 +58,12 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  isReady2Launch: get(state, 'app.isReady2Launch')
+  isReady2Launch: get(state, 'app.isReady2Launch'),
+  isLogin: get(state, 'auth.isLogin')
 })
 
 const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

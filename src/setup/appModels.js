@@ -4,11 +4,11 @@ import modelModule from 'models'
 
 // validate model
 function checkModel (model) {
-  const { namespace, state, reducers, effects } = model
+  const { namespace, state, reducers, sagas } = model
   invariant(isString(namespace), `app.addModel: namespace (${namespace}) should be string.`)
   invariant(isObject(state), `app.addModel: state (${state}) should be object.`)
   invariant(isObject(reducers), `app.addModel: reducers (${reducers}) should be object.`)
-  if (effects) invariant(isObject(effects), `app.addModel: effects (${effects}) should be object.`)
+  if (sagas) invariant(isObject(sagas), `app.addModel: sagas (${sagas}) should be object.`)
   return model
 }
 

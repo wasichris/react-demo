@@ -1,46 +1,35 @@
 import React from 'react'
 import { addNumber as add } from 'common/utils'
-import { Header, Container } from 'components'
+import { Container } from 'components'
 import { get } from 'lodash'
 import { connect } from 'react-redux'
 import { goBack } from 'react-router-redux'
-import { login, logout } from '../../models/auth.effect'
 
 const Home = props => {
-  const { logout } = props
-  return <div>
-    <Header doLogout={logout} />
-    <Container>
+  return <Container>
 
-      <div className='jumbotron'>
-        <div className='col-sm-8 mx-auto'>
-          <h1>Navbar examples</h1>
-          <p>This {add(1, 2, 3)} example is a quick exercise to illustrate how the navbar and its contents work. Some navbars extend the width of the viewport, others are confined within a <code>.container</code>. For positioning of navbars, checkout the <a href='../navbar-top/'>top</a> and <a href='../navbar-top-fixed/'>fixed top</a> examples.</p>
-          <p>
-            <button className='btn btn-primary' onClick={() => props.setUserName('Dispatched New Name')} role='button'>Dispatch »</button>
-            {` Hi, I'm `}{props.userName}
-          </p>
-          <p>
-            <button className='btn btn-primary' onClick={() => props.goBack()} role='button'>Go back »</button>
-          </p>
-          <p>
-            <button className='btn btn-primary' onClick={() => props.getUserProfile('1041677')} role='button'>Get user profile »</button>
-            {' [email] ' + props.userProfile.email + ' [phone] ' + props.userProfile.phone}
-          </p>
-          <p>
-            <button className='btn btn-primary' onClick={() => props.login('id', 'pwd')} role='button'>Login »</button>
-          </p>
-          <p>
-            <button className='btn btn-primary' onClick={() => props.logout()} role='button'>Logout »</button>
-          </p>
-          <p>
-            <button className='btn btn-primary' onClick={() => props.addConfirmModal()} role='button'>Leave Confirm »</button>
-          </p>
-        </div>
+    <div className='jumbotron'>
+      <div className='col-sm-8 mx-auto'>
+        <h1>Navbar examples</h1>
+        <p>This {add(1, 2, 3)} example is a quick exercise to illustrate how the navbar and its contents work. Some navbars extend the width of the viewport, others are confined within a <code>.container</code>. For positioning of navbars, checkout the <a href='../navbar-top/'>top</a> and <a href='../navbar-top-fixed/'>fixed top</a> examples.</p>
+        <p>
+          <button className='btn btn-primary' onClick={() => props.setUserName('Dispatched New Name')} role='button'>Dispatch »</button>
+          {` Hi, I'm `}{props.userName}
+        </p>
+        <p>
+          <button className='btn btn-primary' onClick={() => props.goBack()} role='button'>Go back »</button>
+        </p>
+        <p>
+          <button className='btn btn-primary' onClick={() => props.getUserProfile('1041677')} role='button'>Get user profile »</button>
+          {' [email] ' + props.userProfile.email + ' [phone] ' + props.userProfile.phone}
+        </p>
+        <p>
+          <button className='btn btn-primary' onClick={() => props.addConfirmModal()} role='button'>Leave Confirm »</button>
+        </p>
       </div>
+    </div>
 
-    </Container>
-  </div>
+  </Container>
 }
 
 const mapStateToProps = state => ({
@@ -53,8 +42,6 @@ const mapDispatchToProps = dispatch => ({
   setUserName: (newName) => dispatch({ type: 'profile/setUserName', payload: newName }),
   goBack: () => dispatch(goBack()),
   getUserProfile: (userId) => dispatch({ type: 'profile/getUserProfile', payload: userId }),
-  login: (userId, password) => dispatch(login(userId, password)),
-  logout: () => dispatch(logout()),
   addConfirmModal: () => {
     const title = 'Leave System'
     const content = 'Are you sure to leave system?'

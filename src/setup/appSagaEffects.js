@@ -23,13 +23,9 @@ function extractModelEffects (model) {
       }
     }
 
-    function * watcher () {
-      // 設定 action type 與 saga 的關聯
-      // 如果 match pattern 就會執行 saga effect function
-      yield takeEvery(`${namespace}/${k}`, sagaFunction)
-    }
-
-    effects.push(watcher())
+    // 設定 action type 與 saga 的關聯
+    // 如果 match pattern 就會執行 saga effect function
+    effects.push(takeEvery(`${namespace}/${k}`, sagaFunction))
   })
 
   return effects

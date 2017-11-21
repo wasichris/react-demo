@@ -5,23 +5,23 @@ const key = {
 
 export default {
   get account () {
-    return window.localStorage.getItem(key.account)
+    return window.sessionStorage.getItem(key.account)
   },
   set account (val) {
     if (val) {
-      window.localStorage.setItem(key.account, val)
+      window.sessionStorage.setItem(key.account, val)
     } else {
-      window.localStorage.removeItem(key.account)
+      window.sessionStorage.removeItem(key.account)
     }
   },
   get token () {
-    return window.localStorage.getItem(key.token)
+    return window.sessionStorage.getItem(key.token)
   },
   set token (val) {
     if (val) {
-      window.localStorage.setItem(key.token, val)
+      window.sessionStorage.setItem(key.token, val)
     } else {
-      window.localStorage.removeItem(key.token)
+      window.sessionStorage.removeItem(key.token)
     }
   }
 }
