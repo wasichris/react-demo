@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, NavLink, Switch } from 'react-router-dom'
 import { Container } from 'components'
-import { PlayStyledComponents } from 'pages'
+import { PlayStyledComponents, PlayIntlUniversal } from 'pages'
 import { PrivateRoute } from 'containers'
 
 export default (props) => {
@@ -16,7 +16,7 @@ export default (props) => {
           <NavLink className='nav-link' to={`${match.url}/StyledComponents`} activeClassName='active'> styled-components </NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink className='nav-link' to={`${match.url}/B`} activeClassName='active'> B Function </NavLink>
+          <NavLink className='nav-link' to={`${match.url}/PlayIntlUniversal`} activeClassName='active'> react-intl-universal </NavLink>
         </li>
         <li className='nav-item'>
           <NavLink className='nav-link' to={`${match.url}/C`} activeClassName='active'> C Function </NavLink>
@@ -28,7 +28,7 @@ export default (props) => {
     <Container.Content>
       <Switch>
         <PrivateRoute path={`${match.url}/StyledComponents`} component={PlayStyledComponents} />
-        <PrivateRoute path={`${match.url}/B`} component={() => <div>BBBBBBBB</div>} />
+        <PrivateRoute path={`${match.url}/PlayIntlUniversal`} component={PlayIntlUniversal} />
         <PrivateRoute path={`${match.url}/C`} component={() => <div>CCCCCCCC</div>} />
         <Redirect to={`${match.url}/StyledComponents`} /> {/* 預設頁面 */}
       </Switch>

@@ -3,6 +3,8 @@ import { put, call, take, fork, select } from 'redux-saga/effects'
 import { push, replace } from 'react-router-redux'
 import { storage, api } from 'services'
 import { get } from 'lodash'
+import { setupLocale } from 'setup'
+import intl from 'react-intl-universal'
 
 const namespace = 'auth/effect/'
 
@@ -24,12 +26,16 @@ function * preProcess () {
     const config = yield call(api.CR000103)
     yield put({ type: 'app/setSystemConfig', payload: config })
 
+    // setup locale
+    yield call(setupLocale.initLocale)
+
     // check existing token
     if (storage.token) {
       const { isPass } = yield call(api.CR000104)
       yield put({ type: 'auth/setIsLogin', payload: isPass })
     }
 
+    // everything is done, lanuch page
     yield put({ type: 'app/setIsReady2Lanuch', payload: true })
     return true
   } catch (error) {
@@ -82,7 +88,7 @@ function * loginFlow () {
         storage.token = null
         yield put({ type: 'auth/setIsLogin', payload: false })
         yield put(push('/Login'))
-        toastr.info('已經登出系統')
+        toastr.info(intl.get('LOG_OUT_MSG').d('已經登出系統'))
       }
     }
   } else {

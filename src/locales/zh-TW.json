@@ -1,0 +1,14 @@
+{
+  "EXAMPLE": "使用範例",
+  "USE_HTML": "可以使用 <span style='color:red'>HTML</span> 喔！",
+  "HELLO": "哈囉, {name}. 歡迎進入 {where}！",
+  "PHOTO": "你有{num, plural, =0 {零張} =1 {單張} other {#}}照片",
+  "SALE_PRICE": "價錢為 {price, number, TWD}",
+  "SALE_START": "特價開始日期為 {start, date}",
+  "SALE_END": "特價結束日期為 {end, date, full}",
+  "LOG_OUT": "登出",
+  "LOG_OUT_MSG": "已登出系統，請重新登入",
+  "COMMON": {
+    "SUCCESS": "成功！"
+  }
+}

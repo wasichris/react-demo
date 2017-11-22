@@ -55,6 +55,7 @@
     "popper.js": "^1.12.5",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-intl-universal": "^1.4.3",
     "react-redux": "^5.0.6",
     "react-redux-loading-bar": "^2.9.3",
     "react-router": "^4.1.2",

@@ -1,0 +1,15 @@
+{
+  "TITLE": "This is a tiltle",
+  "EXAMPLE": "Example",
+  "USE_HTML": "You can use <span style='color:red'>HTML</span> !!",
+  "HELLO": "Hello, {name}. Welcome to {where}!",
+  "PHOTO": "You have {num, plural, =0 {no photo} =1 {one photo} other {# photos}}.",
+  "SALE_PRICE": "The price is {price, number, USD}",
+  "SALE_START": "Sale begins  {start, date}",
+  "SALE_END": "Sale ends {end, date, full}",
+  "LOG_OUT": "log out",
+  "LOG_OUT_MSG": "Logged out, please sign in",
+  "COMMON": {
+    "SUCCESS": "Success!"
+  }
+}

@@ -54,7 +54,8 @@ class WebpackDistConfig extends WebpackBaseConfig {
           'babel-polyfill',
           'redux-form',
           'recompose',
-          'classnames'
+          'classnames',
+          'react-intl-universal'
         ]
       },
       // 加入 default 的 plugins 設定

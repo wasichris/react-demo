@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import intl from 'react-intl-universal'
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
@@ -37,7 +38,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               </ul>
 
               {/* 系統功能選單 */}
-              <a className='btn btn-outline-secondary btn-sm' href='#' role='button' onClick={doLogout}>logout</a>
+              <a className='btn btn-outline-secondary btn-sm' href='#' role='button' onClick={doLogout}>{intl.get('LOG_OUT')}</a>
 
             </div>
           </div>
