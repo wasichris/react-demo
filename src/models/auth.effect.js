@@ -51,6 +51,8 @@ function * authorize (account, password) {
       storage.token = res.token
       // set up login user needed info
       yield put({ type: 'auth/setIsLogin', payload: true })
+      // get user profile
+      yield put({ type: 'profile/getUserProfile', payload: account })
       // luanch home page (everything is done)
       yield put({ type: LOGIN_SUCCESS })
       yield put(replace('/Home'))

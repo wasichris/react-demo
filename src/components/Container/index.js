@@ -7,20 +7,18 @@ const Wrapper = styled.div`
 
 // 主要內容區塊
 const Container = ({ children }) => <Wrapper className='container'>
-  <div className='container-fluid'>
-    <div className='row'>
-      {children}
-    </div>
+  <div className='row'>
+    {children}
   </div>
 </Wrapper>
 
 // 左側功能選單
-const SideBar = ({ children }) => <nav className='col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar'>
+const SideBar = ({ children }) => <div className='col-md-3 mb-3'> <nav className='bg-light sidebar'>
   {children}
-</nav>
+</nav></div>
 
 // 功能頁面顯示區塊
-const Content = ({ children }) => <main className='col-sm-9 ml-sm-auto col-md-10' role='main'>
+const Content = ({ children }) => <main className='col-md-9 ' role='main'>
   {children}
 </main>
 

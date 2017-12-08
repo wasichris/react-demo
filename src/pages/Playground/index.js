@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, NavLink, Switch } from 'react-router-dom'
 import { Container } from 'components'
-import { PlayStyledComponents, PlayIntlUniversal } from 'pages'
+import { PlayStyledComponents, PlayIntlUniversal, PlayReduxForm } from 'pages'
 import { PrivateRoute } from 'containers'
 
 export default (props) => {
@@ -19,7 +19,7 @@ export default (props) => {
           <NavLink className='nav-link' to={`${match.url}/PlayIntlUniversal`} activeClassName='active'> react-intl-universal </NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink className='nav-link' to={`${match.url}/C`} activeClassName='active'> C Function </NavLink>
+          <NavLink className='nav-link' to={`${match.url}/PlayReduxForm`} activeClassName='active'> redux-form </NavLink>
         </li>
       </ul>
     </Container.SideBar>
@@ -29,7 +29,7 @@ export default (props) => {
       <Switch>
         <PrivateRoute path={`${match.url}/StyledComponents`} component={PlayStyledComponents} />
         <PrivateRoute path={`${match.url}/PlayIntlUniversal`} component={PlayIntlUniversal} />
-        <PrivateRoute path={`${match.url}/C`} component={() => <div>CCCCCCCC</div>} />
+        <PrivateRoute path={`${match.url}/PlayReduxForm`} component={PlayReduxForm} />
         <Redirect to={`${match.url}/StyledComponents`} /> {/* 預設頁面 */}
       </Switch>
     </Container.Content>

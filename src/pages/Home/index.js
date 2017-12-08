@@ -20,10 +20,6 @@ const Home = props => {
           <button className='btn btn-primary' onClick={() => props.goBack()} role='button'>Go back »</button>
         </p>
         <p>
-          <button className='btn btn-primary' onClick={() => props.getUserProfile('1041677')} role='button'>Get user profile »</button>
-          {' [email] ' + props.userProfile.email + ' [phone] ' + props.userProfile.phone}
-        </p>
-        <p>
           <button className='btn btn-primary' onClick={() => props.addConfirmModal()} role='button'>Leave Confirm »</button>
         </p>
       </div>
@@ -41,7 +37,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setUserName: (newName) => dispatch({ type: 'profile/setUserName', payload: newName }),
   goBack: () => dispatch(goBack()),
-  getUserProfile: (userId) => dispatch({ type: 'profile/getUserProfile', payload: userId }),
   addConfirmModal: () => {
     const title = 'Leave System'
     const content = 'Are you sure to leave system?'
