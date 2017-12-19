@@ -10,11 +10,11 @@ const Home = props => {
 
     <div className='jumbotron'>
       <div className='col-sm-8 mx-auto'>
-        <h1>Navbar examples</h1>
-        <p>This {add(1, 2, 3)} example is a quick exercise to illustrate how the navbar and its contents work. Some navbars extend the width of the viewport, others are confined within a <code>.container</code>. For positioning of navbars, checkout the <a href='../navbar-top/'>top</a> and <a href='../navbar-top-fixed/'>fixed top</a> examples.</p>
+        <h1>Welcome to React</h1>
+        <p>Lorem ipsum dolor {add(1, 2, 3)} sit amet, consectetur adipisicing elit. Iste quia tenetur sapiente quo ipsum praesentium, ipsam impedit ducimus quasi doloremque natus culpa nemo labore? Quae voluptatum officiis, reiciendis, laboriosam tempore ut labore obcaecati assumenda ratione expedita voluptates ullam dolore odit!</p>
         <p>
-          <button className='btn btn-primary' onClick={() => props.setUserName('Dispatched New Name')} role='button'>Dispatch »</button>
-          {` Hi, I'm `}{props.userName}
+          <button className='btn btn-primary' onClick={() => props.setUserName('Eunice Chang')} role='button'>Dispatch »</button>
+          {` Hi, I'm ${props.userName}`}
         </p>
         <p>
           <button className='btn btn-primary' onClick={() => props.goBack()} role='button'>Go back »</button>

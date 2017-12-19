@@ -18,7 +18,8 @@ export class PrivateRoute extends Component {
   }
 
   static propTypes = {
-    component: PropTypes.any.isRequired
+    component: PropTypes.any.isRequired,
+    funcCode: PropTypes.string.isRequired
   }
 
   checkToken = async () => {
@@ -30,6 +31,7 @@ export class PrivateRoute extends Component {
       isAuthed = !!storage.token
       if (isAuthed) {
         const data = await api.CR000104()
+        // check this.props.funcCode with server here ...
         isAuthed = data.isPass
       }
     }

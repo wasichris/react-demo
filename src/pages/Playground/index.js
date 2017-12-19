@@ -27,9 +27,9 @@ export default (props) => {
     {/* 功能顯示區塊 */}
     <Container.Content>
       <Switch>
-        <PrivateRoute path={`${match.url}/StyledComponents`} component={PlayStyledComponents} />
-        <PrivateRoute path={`${match.url}/PlayIntlUniversal`} component={PlayIntlUniversal} />
-        <PrivateRoute path={`${match.url}/PlayReduxForm`} component={PlayReduxForm} />
+        <PrivateRoute funcCode='F02' path={`${match.url}/StyledComponents`} component={PlayStyledComponents} />
+        <PrivateRoute funcCode='F03' path={`${match.url}/PlayIntlUniversal`} component={PlayIntlUniversal} />
+        <PrivateRoute funcCode='F04' path={`${match.url}/PlayReduxForm`} component={PlayReduxForm} />
         <Redirect to={`${match.url}/StyledComponents`} /> {/* 預設頁面 */}
       </Switch>
     </Container.Content>

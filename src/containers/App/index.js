@@ -42,7 +42,7 @@ export class App extends Component {
             <Route path='/Login' component={Login} />
 
             {/* HOME頁面 */}
-            <PrivateRoute path='/Home' component={Home} />
+            <PrivateRoute path='/Home' component={Home} funcCode='F01' />
 
             {/* 範例頁面 */}
             <Route path='/Playground' component={Playground} />
