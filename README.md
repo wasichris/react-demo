@@ -14,6 +14,7 @@ This is a React demo application, using the following packages to build up.
 
 <br>
 
+
 What you can see in this demo.
 - One way data flow with react-redux
 - Handle async thigns by using redux-saga
@@ -54,16 +55,22 @@ npm run build-production
 
 Login & logout flow
 
-![image](https://user-images.githubusercontent.com/12275870/33840608-5d16c27c-ded0-11e7-8fb4-9e43bd33a00a.png)
+![image](https://user-images.githubusercontent.com/12275870/34146935-dceedcee-e4d6-11e7-8e88-8901e14f351c.png)
+
+<br>
 
 Change route & check token and page permission with server
 
-![watch 75](https://user-images.githubusercontent.com/12275870/33873273-51c65614-df55-11e7-91dc-3d59848508dc.gif)
+![watch 78](https://user-images.githubusercontent.com/12275870/34147361-61c9a722-e4d8-11e7-84c5-c6f5f7db61d5.gif)
+
+<br>
 
 Form fields & validation
 
 ![image](https://user-images.githubusercontent.com/12275870/33840771-d4f3dbf4-ded0-11e7-90f8-75d75609ab2a.png)
 
+<br>
+
 Switch language
 
-![watch 72](https://user-images.githubusercontent.com/12275870/33872962-1d3ce8f0-df54-11e7-9761-da5f983bea39.gif)
+![watch 76](https://user-images.githubusercontent.com/12275870/34147159-b30ce0aa-e4d7-11e7-81cb-1b6adfcf3858.gif)
