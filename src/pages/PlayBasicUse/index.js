@@ -1,7 +1,17 @@
 import toastr from 'toastr'
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 const getCurrentTime = () => (new Date()).toLocaleTimeString('en-US')
+
+const CodeWrapper = styled.div`
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 10px;
+  border: dashed;
+  border-width: 1px;
+  word-break: break-word;
+`
 
 // Functional Stateless Components
 const Son = (props) => {
@@ -28,18 +38,11 @@ const Father = () => {
     <hr />
     {/* <button className='btn btn-primary' onClick={() => { secretMsg = 'oxoxoxoxo' }} > Tell son another secret </button> */}
     <Son secret={secretMsg} feedback={feedback} />
+
   </div>
 }
 
-// 以上是單純的初始值傳遞
-// BUT 如果需要當資料變動互動時可以渲染到頁面(子組件)上
-// 直接去更改值這樣是行不通的 (如以上註解部分)
-// 因為 react 真的沒有這麼聰明，你一定要跟他說那些情況要渲染，而這個關鍵就是 state
-
-// 如果需要做資料互動，這時候就要使用 state 才行
-// 透過 setState() 方法變動 state 才會觸發 render 更新頁面
-
-// State Components
+// State Component
 class FatherWithState extends Component {
   constructor (props) {
     super(props)
@@ -52,13 +55,13 @@ class FatherWithState extends Component {
   }
 
   tellSecret = msg => {
-    // 直接變動 state 不會觸發 render 更新頁面
+    // 注意: 直接變動 state 不會觸發 render 更新頁面喔！
     // this.state.secretMsg = msg
     this.setState(state => ({ ...state, secretMsg: msg }))
   }
 
   feedback = msg => {
-    // 直接變動 state 不會觸發 render 更新頁面
+    // 注意: 直接變動 state 不會觸發 render 更新頁面喔！
     // this.state.feedbackMsg = msg
     this.setState(state => ({ ...state, feedbackMsg: msg }))
   }
@@ -79,7 +82,9 @@ class FatherWithState extends Component {
 
 export default () => {
   return <div>
+    <CodeWrapper>在兩個無狀態的組件互動相當有限，約略只能做初始值傳遞與function call back；當想要在資料變動(互動)時自動渲染到頁面(或子組件)上，如果直接去更改值這樣是無法讓頁面重新渲染的，因為 React 真的沒有這麼聰明，你一定要跟他說那些東西變動時要重新渲染畫面，而這個關鍵就是 state 狀態。</CodeWrapper>
     <Father />
+    <CodeWrapper>當父層具有狀態 state 時，與無狀態子層互動時可以傳遞 state 進入子層作為 props，當 state 透過 setState() 改變後會自動渲染至子層，讓畫面重新刷新顯示新資料。如以下例點選 "Tell son another secret" 按鍵時，其實只是透過 setState() 修改父層內部狀態的值，而子層中因為有使用到父層傳遞進來的狀態，因此畫面也會一併刷新；反之亦然，當子層點選 "Tell father I'm so happy" 按鍵時，也只是透過 function call back 通知父層自己修改自己的內部狀態值，重新刷新畫面顯示新值。</CodeWrapper>
     <FatherWithState />
   </div>
 }
