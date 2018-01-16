@@ -5,8 +5,8 @@ import { delay } from 'redux-saga'
 import invariant from 'invariant'
 
 function extractModelEffects (model) {
-  const { namespace, sagas, effects = [] } = model
-  each(sagas, (saga, k) => {
+  const { namespace, takeEverySagas, effects = [] } = model
+  each(takeEverySagas, (saga, k) => {
     function * sagaFunction (action) {
       try {
         yield saga(action, { simplePut: enableSimplePut(namespace), put, call, select, delay, take, all })

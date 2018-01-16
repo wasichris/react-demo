@@ -8,6 +8,9 @@
   "SALE_END": "特價結束日期為 {end, date, full}",
   "LOG_OUT": "登出",
   "LOG_OUT_MSG": "已登出系統，請重新登入",
+  "MENU_PLAYGROUND": "遊樂場",
+  "MENU_HOME": "首頁",
+  "MENU_CONTACT_ME": "聯絡我",
   "COMMON": {
     "SUCCESS": "成功！"
   }

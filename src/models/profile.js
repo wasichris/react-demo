@@ -15,7 +15,8 @@ export default {
       return { ...state, userProfile: payload }
     }
   },
-  sagas: {
+  takeEverySagas: {
+    /* 透過 Saga TakeEvery 來處理非同步 action 作業 */
     * getUserProfile (action, { simplePut, call }) {
       const { payload: userId } = action
       // get data from remote api
@@ -30,5 +31,7 @@ export default {
       toastr.success('更新成功')
     }
   },
-  effects: [ /* 在 app 啟動後 root saga 直接執行的 saga-effect 項目 (ex. fork, put ...) */]
+  effects: [
+    /* 在 app 啟動後 root saga 直接執行的 saga-effect 項目 (ex. fork, put ...) */
+  ]
 }

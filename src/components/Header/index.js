@@ -24,16 +24,13 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
             <div className='collapse navbar-collapse' id='navbarsExampleDefault'>
               <ul className='navbar-nav mr-auto'>
                 <li className='nav-item'>
-                  <NavLink className='nav-link' to={'/Home'} activeClassName='active'> Home </NavLink>
+                  <NavLink className='nav-link' to={'/Home'} activeClassName='active'> {intl.get('MENU_HOME')} </NavLink>
                 </li>
                 <li className='nav-item'>
-                  <NavLink className='nav-link' to={'/Playground'} activeClassName='active'> Playground </NavLink>
+                  <NavLink className='nav-link' to={'/Playground'} activeClassName='active'> {intl.get('MENU_PLAYGROUND')} </NavLink>
                 </li>
                 <li className='nav-item'>
-                  <NavLink className='nav-link' to={'/Profile'} activeClassName='active'> Profile </NavLink>
-                </li>
-                <li className='nav-item'>
-                  <NavLink className='nav-link' to={'/Contact'} activeClassName='active'> Contact Me </NavLink>
+                  <NavLink className='nav-link' to={'/Contact'} activeClassName='active'> {intl.get('MENU_CONTACT_ME')} </NavLink>
                 </li>
               </ul>
 

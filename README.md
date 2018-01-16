@@ -16,8 +16,9 @@ This is a React demo application, using the following packages to build up.
 
 
 What you can see in this demo.
+- Stateless / stateful parent-child component reaction
 - One way data flow with react-redux
-- Handle async thigns by using redux-saga
+- Handle async stuff by using redux-saga
 - Authorized routes with redux-route
 - Internationalize app with react-intl-universal
 - Form's initial values, fields, and validation with redux-form
@@ -55,22 +56,22 @@ npm run build-production
 
 Login & logout flow
 
-![image](https://user-images.githubusercontent.com/12275870/34146935-dceedcee-e4d6-11e7-8e88-8901e14f351c.png)
+<img src="https://user-images.githubusercontent.com/12275870/34146935-dceedcee-e4d6-11e7-8e88-8901e14f351c.png" width="250px">
 
-<br>
+<br><br>
 
-Change route & check token and page permission with server
+Check token and page permission with server while changing route
 
-![watch 78](https://user-images.githubusercontent.com/12275870/34147361-61c9a722-e4d8-11e7-84c5-c6f5f7db61d5.gif)
+<img src="https://user-images.githubusercontent.com/12275870/34147361-61c9a722-e4d8-11e7-84c5-c6f5f7db61d5.gif" width="800px">
 
-<br>
+<br><br>
 
 Form fields & validation
 
-![image](https://user-images.githubusercontent.com/12275870/33840771-d4f3dbf4-ded0-11e7-90f8-75d75609ab2a.png)
+<img src="https://user-images.githubusercontent.com/12275870/33840771-d4f3dbf4-ded0-11e7-90f8-75d75609ab2a.png" width="500px">
 
-<br>
+<br><br>
 
 Switch language
 
-![watch 76](https://user-images.githubusercontent.com/12275870/34147159-b30ce0aa-e4d7-11e7-81cb-1b6adfcf3858.gif)
+<img src="https://user-images.githubusercontent.com/12275870/34976604-49f83be4-fad2-11e7-8f04-acd2ddb307aa.gif" width="600px">

@@ -6,6 +6,7 @@ import { get } from 'lodash'
 import { setupLocale } from 'setup'
 import intl from 'react-intl-universal'
 
+// namespace
 const namespace = 'auth/effect/'
 
 // action name

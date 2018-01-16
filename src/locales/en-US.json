@@ -9,6 +9,9 @@
   "SALE_END": "Sale ends {end, date, full}",
   "LOG_OUT": "log out",
   "LOG_OUT_MSG": "Logged out, please sign in",
+  "MENU_PLAYGROUND": "Playground",
+  "MENU_HOME": "Home",
+  "MENU_CONTACT_ME": "Contact Me",
   "COMMON": {
     "SUCCESS": "Success!"
   }
