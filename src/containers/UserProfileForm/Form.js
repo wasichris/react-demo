@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Note } from 'components'
 
 import InputField from '../InputField'
 import CheckboxField from '../CheckboxField'
@@ -82,16 +83,6 @@ const Wrapper = styled.div`
 
 `
 
-// 資料顯示區塊樣式
-const CodeWrapper = styled.div`
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 10px;
-  border: dashed;
-  border-width: 1px;
-  word-break: break-word;
-`
-
 // Field normalizing
 const noChineseAndUpper = value => value && value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()
 
@@ -113,7 +104,7 @@ class Form extends Component {
         {/* 即時顯示異動資料 */}
         <div className='form-group'>
           <label htmlFor='address'>Form Values</label>
-          <CodeWrapper>{JSON.stringify(formValues)}</CodeWrapper>
+          <Note>{JSON.stringify(formValues)}</Note>
         </div>
         <div className='form-row'>
           <div className='form-group col-md-6'>

@@ -51,7 +51,7 @@ export class PrivateRoute extends Component {
   }
 
   componentWillReceiveProps = async (nextProps) => {
-    if (nextProps.location.pathname !== this.props.location.pathname) {
+    if (nextProps.path !== this.props.path) {
       await this.checkAuth()
     }
   }

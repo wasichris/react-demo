@@ -25,6 +25,8 @@ export class PlayIntlUniversal extends Component {
 
   render () {
     return <div className='container'>
+      <h2>Internationalization (i18n)</h2>
+      <hr />
       <div>
         <button className='btn btn-primary mr-2' onClick={this.handleTwClick}>繁</button>
         <button className='btn btn-primary' onClick={this.handleUsClick}>英</button>

@@ -23,9 +23,6 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-// 要使用 initial value from state 就要 connect 包 reduxForm (使用時會先)
-// 要使用 form value 就要 reduxForm 包 connect (使用時會先)
-
 // 需要取得 form values
 // 在此先將 Form 傳入 reduxForm() 回傳的 function 中執行
 // 再將執行後回傳值傳入 connect() 回傳的 function 中執行 (compose 只是語法糖喔!)

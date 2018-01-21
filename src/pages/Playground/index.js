@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, NavLink, Switch } from 'react-router-dom'
 import { Container } from 'components'
-import { PlayStyledComponents, PlayIntlUniversal, PlayReduxForm, PlayBasicUse } from 'pages'
+import { PlayStyledComponents, PlayIntlUniversal, PlayReduxForm, PlayBasicUse, PlayErrorBoundary } from 'pages'
 import { PrivateRoute } from 'containers'
 
 export default (props) => {
@@ -24,6 +24,9 @@ export default (props) => {
         <li className='nav-item'>
           <NavLink className='nav-link' to={`${match.url}/PlayReduxForm`} activeClassName='active'> redux-form </NavLink>
         </li>
+        <li className='nav-item'>
+          <NavLink className='nav-link' to={`${match.url}/PlayErrorBoundary`} activeClassName='active'> error boundaries (v16) </NavLink>
+        </li>
       </ul>
     </Container.SideBar>
 
@@ -34,9 +37,9 @@ export default (props) => {
         <PrivateRoute funcCode='F02' path={`${match.url}/PlayStyledComponents`} component={PlayStyledComponents} />
         <PrivateRoute funcCode='F03' path={`${match.url}/PlayIntlUniversal`} component={PlayIntlUniversal} />
         <PrivateRoute funcCode='F04' path={`${match.url}/PlayReduxForm`} component={PlayReduxForm} />
+        <PrivateRoute funcCode='F05' path={`${match.url}/PlayErrorBoundary`} component={PlayErrorBoundary} />
         <Redirect to={`${match.url}/PlayBasicUse`} /> {/* 預設頁面 */}
       </Switch>
     </Container.Content>
-
   </Container>
 }

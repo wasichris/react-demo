@@ -2,7 +2,7 @@
 
 This is a React demo application, using the following packages to build up.
 
-- [react](https://github.com/facebook/react/) v15.6.1
+- [react](https://github.com/facebook/react/) v16.2.0
 - [react-redux](https://github.com/reactjs/react-redux) v5.0.6
 - [react-router](https://github.com/ReactTraining/react-router) v4.1.2
 - [redux-saga](https://github.com/redux-saga/redux-saga) v0.15.6
@@ -58,20 +58,24 @@ Login & logout flow
 
 <img src="https://user-images.githubusercontent.com/12275870/34146935-dceedcee-e4d6-11e7-8e88-8901e14f351c.png" width="250px">
 
-<br><br>
+<br>
 
 Check token and page permission with server while changing route
 
 <img src="https://user-images.githubusercontent.com/12275870/34147361-61c9a722-e4d8-11e7-84c5-c6f5f7db61d5.gif" width="800px">
 
-<br><br>
+<br>
 
 Form fields & validation
 
 <img src="https://user-images.githubusercontent.com/12275870/33840771-d4f3dbf4-ded0-11e7-90f8-75d75609ab2a.png" width="500px">
 
-<br><br>
+<br>
 
 Switch language
 
 <img src="https://user-images.githubusercontent.com/12275870/34976604-49f83be4-fad2-11e7-8f04-acd2ddb307aa.gif" width="600px">
+
+Error Boundaries
+
+<img src="https://user-images.githubusercontent.com/12275870/35196227-3e9d4942-ff0a-11e7-9888-7e5bd9cb89f2.gif" width="600px">

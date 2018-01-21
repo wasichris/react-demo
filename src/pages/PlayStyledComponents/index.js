@@ -75,18 +75,22 @@ const ExampleCard = (props) => {
 
 export default () => {
   return (
-    <div className='row'>
-      <ExampleCard header={'Basic use'}>
-        <FlippedDiv >
-          <div>hover me to get secret</div>
-          <div>secret show up</div>
-        </FlippedDiv>
-      </ExampleCard>
-      <ExampleCard header={'Conditional css'}>
-        <FillCollorDiv > Disable hover fill function</FillCollorDiv>
-        <FillCollorDiv hoverFill> Enable hover fill function</FillCollorDiv>
-        <FillCollorDiv bkColor={'yellow'}> get background color by props</FillCollorDiv>
-      </ExampleCard>
+    <div className='container'>
+      <h2>Style components</h2>
+      <hr />
+      <div className='row'>
+        <ExampleCard header={'Basic use'}>
+          <FlippedDiv >
+            <div>hover me to get secret</div>
+            <div>secret show up</div>
+          </FlippedDiv>
+        </ExampleCard>
+        <ExampleCard header={'Conditional css'}>
+          <FillCollorDiv > Disable hover fill function</FillCollorDiv>
+          <FillCollorDiv hoverFill> Enable hover fill function</FillCollorDiv>
+          <FillCollorDiv bkColor={'yellow'}> get background color by props</FillCollorDiv>
+        </ExampleCard>
+      </div>
     </div>
   )
 }
